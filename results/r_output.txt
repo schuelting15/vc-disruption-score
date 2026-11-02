@@ -1,0 +1,24 @@
+panel: 77,392 rows, 697 firms, 132 months
+
+RUNG 1 - quintile sort, unconditional  (132 months)
+  low quintile      +0.303 %/mo
+  high quintile     -0.475 %/mo
+  long-short GROSS  -0.778 %/mo   t(NW) = -2.82   Sharpe -0.72
+  long-short NET    -0.815 %/mo   t(NW) = -2.95   Sharpe -0.75
+  turnover          0.18 /month  -> 0.036 %/mo cost drag
+
+RUNG 1b - quintile sort, industry-neutral  (132 months)
+  low quintile      -0.009 %/mo
+  high quintile     +0.179 %/mo
+  long-short GROSS  +0.188 %/mo   t(NW) = +0.70   Sharpe +0.19
+  long-short NET    +0.135 %/mo   t(NW) = +0.50   Sharpe +0.14
+  turnover          0.26 /month  -> 0.053 %/mo cost drag
+
+RUNG 2 - Fama-MacBeth, univariate  (132 monthly cross-sections)
+  (Intercept)    +0.1819 %/mo   t(NW) = +0.56
+  score          -0.8670 %/mo   t(NW) = -4.10
+
+RUNG 2b - with size control  (132 monthly cross-sections)
+  (Intercept)    +0.1819 %/mo   t(NW) = +0.56
+  score          -0.8693 %/mo   t(NW) = -4.11
+  lnME           +0.0117 %/mo   t(NW) = +0.09

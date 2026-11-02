@@ -1,0 +1,95 @@
+==========================================================================
+DISRUPTION SCORE -- FULL RUN
+==========================================================================
+
+cached Item 1 extracts : 7,804
+   read 4,000/7,804  [0s]
+unreadable files       : 0
+
+filings read           : 7,804
+usable (>=1,000 chars) : 7,644   firms: 697
+median Item 1 length   : 2,990 chars
+
+extraction methods:
+extract_method
+header_span    7644
+
+private universe       : 3,929 startups; each joins the pool the year after its first round
+   2014: pool    382 startups, vocabulary    325, 1,035 10-Ks live, above the 0.1 gate: median 76 of 100  [1s]
+   2015: pool    605 startups, vocabulary    325, 1,076 10-Ks live, above the 0.1 gate: median 100 of 100  [1s]
+   2016: pool    847 startups, vocabulary    325, 1,110 10-Ks live, above the 0.1 gate: median 100 of 100  [2s]
+   2017: pool  1,110 startups, vocabulary    325, 1,138 10-Ks live, above the 0.1 gate: median 100 of 100  [2s]
+   2018: pool  1,392 startups, vocabulary    325, 1,177 10-Ks live, above the 0.1 gate: median 100 of 100  [3s]
+   2019: pool  1,697 startups, vocabulary    325, 1,216 10-Ks live, above the 0.1 gate: median 100 of 100  [3s]
+   2020: pool  2,017 startups, vocabulary    325, 1,244 10-Ks live, above the 0.1 gate: median 100 of 100  [3s]
+   2021: pool  2,356 startups, vocabulary    325, 1,267 10-Ks live, above the 0.1 gate: median 100 of 100  [4s]
+   2022: pool  2,719 startups, vocabulary    325, 1,266 10-Ks live, above the 0.1 gate: median 100 of 100  [4s]
+   2023: pool  3,101 startups, vocabulary    325, 1,246 10-Ks live, above the 0.1 gate: median 100 of 100  [5s]
+   2024: pool  3,507 startups, vocabulary    325, 1,216 10-Ks live, above the 0.1 gate: median 100 of 100  [5s]
+
+firm-months scored     : 78,582  (697 firms); 3,414 filer-months past the 15-month cap on 10-K age (all filers, before the stock link; mostly firms that stopped filing and trading)
+CRSP rows kept         : 101,466  (delisting returns 65)
+
+==========================================================================
+PANEL
+==========================================================================
+rows 77,484 | firms 697 | months 132 (2014-01 to 2024-12) | median 598 firms/month
+
+==========================================================================
+RUNG 1 -- value-weighted quintile sorts
+==========================================================================
+
+count of entrants   (132 months)
+   gross +0.094 %/mo  t(NW) +0.35   net +0.051 %/mo  t(NW) +0.19   turnover 0.22
+
+dollars raised   (132 months)
+   gross +0.008 %/mo  t(NW) +0.03   net -0.029 %/mo  t(NW) -0.10   turnover 0.18
+
+change in dollars   (132 months)
+   gross -0.036 %/mo  t(NW) -0.12   net -0.088 %/mo  t(NW) -0.30   turnover 0.26
+
+dollars / mktcap   (132 months)
+   gross +0.414 %/mo  t(NW) +1.69   net +0.368 %/mo  t(NW) +1.50   turnover 0.23
+
+==========================================================================
+RUNG 2 -- Fama-MacBeth
+==========================================================================
+   ds_count        univariate         -0.1733 %/mo   t(NW) -0.89   (132 months)
+   ds_count        with size control  -0.1725 %/mo   t(NW) -0.89   (132 months)
+   ds_level_raw    univariate         -0.0182 %/mo   t(NW) -0.08   (132 months)
+   ds_level_raw    with size control  -0.0233 %/mo   t(NW) -0.11   (132 months)
+
+==========================================================================
+PLACEBO + BOOTSTRAP + SUBPERIODS
+==========================================================================
+
+ds_count
+   estimate        -0.173 %/mo   t(NW) -0.89
+   placebo p       0.385   FAIL
+   bootstrap 95%   [-0.483, +0.167]   INCLUDES ZERO
+   2014-01 to 2019-09  +0.028 %/mo   t(NW) +0.09
+   2019-10 on     -0.394 %/mo   t(NW) -1.84
+
+ds_level_raw
+   estimate        -0.018 %/mo   t(NW) -0.08
+   placebo p       0.910   FAIL
+   bootstrap 95%   [-0.419, +0.374]   INCLUDES ZERO
+   2014-01 to 2019-09  +0.206 %/mo   t(NW) +0.64
+   2019-10 on     -0.264 %/mo   t(NW) -1.03
+   + size control  -0.023 %/mo   t(NW) -0.11   placebo p 0.890   bootstrap 95% [-0.440, +0.393]
+
+==========================================================================
+RUNG 3 -- industry-neutral (FF12, robustness; pre-registered 18 Sep)
+==========================================================================
+   FF12 coverage 100.0%   firms per industry (median month):
+   1:50  2:64  3:47  5:64  6:81  7:48  8:47  9:54  10:91  11:50
+   ds_count        FM + FF12 dummies  -0.2820 %/mo   t(NW) -0.99   (132 months)
+   ds_count        within-FF12 sort   gross +0.118 %/mo  t(NW) +0.52   net +0.063  t +0.28
+   ds_level_raw    FM + FF12 dummies  -0.3224 %/mo   t(NW) -0.82   (132 months)
+   ds_level_raw    within-FF12 sort   gross +0.339 %/mo  t(NW) +1.18   net +0.284  t +0.99
+   top-quintile industry mix, primary score (share of firm-months):
+   1:0%  2:0%  3:7%  5:18%  6:1%  7:2%  8:35%  9:17%  10:9%  11:10%
+
+PRIMARY RESULT (ds_level_raw with size control, per DECISIONS_2026-09-17 item 1): -0.023 %/mo, t = -0.11, bootstrap [-0.440, +0.393], placebo p = 0.890   (univariate -0.018, t = -0.08)
+
+total runtime 93s

@@ -1,0 +1,15 @@
+# data: generated (synthetic) or licensed (WRDS, Harmonic) -- never commit
+data/
+data_*/
+*.parquet
+results/**/panel_for_R.csv
+# environment and secrets
+.env
+.env*
+.venv/
+__pycache__/
+*.pyc
+.Rhistory
+.RData
+.ipynb_checkpoints/
+.DS_Store
